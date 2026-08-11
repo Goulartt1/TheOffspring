@@ -1,0 +1,21 @@
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --fundo-principal: #1f1f1f;
+    --texto-principal: #eae0d5;
+    --cor-de-destaque: #bd68ee;
+    --cor-secundaria: #FFEB3B;
+    --fonte-titulo: 'Bebas Neue', sans-serif;
+    --fonte-texto: 'Inter', sans-serif;
+}
+
+body{
+background-color: var(--fundo-principal);
+color: var(--texto-principal);
+font-family: var(--fonte-texto);
+
+}

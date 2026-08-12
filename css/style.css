@@ -14,8 +14,43 @@
 }
 
 body{
-background-color: var(--fundo-principal);
-color: var(--texto-principal);
-font-family: var(--fonte-texto);
+    background-color: var(--fundo-principal);
+    color: var(--texto-principal);
+    font-family: var(--fonte-texto);
+}
 
+header {
+    background-color: var(--fundo-principal);
+    padding: 1rem 2rem;
+    position: sticky;
+    top: 0;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav ul {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--texto-principal);
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: var(--cor-de-destaque);
+}
+
+.logo {
+    font-family: var(--fonte-titulo);
+    font-size: 1.8rem;
+    color: var(--cor-de-destaque);
+    letter-spacing: 2px;
 }

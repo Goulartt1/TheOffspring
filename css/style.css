@@ -160,3 +160,61 @@ nav a:hover {
     border-radius: 8px;
     display: block;
 }
+
+#integrantes {
+    padding: 5rem 0;
+}
+
+#integrantes h2 {
+    font-family: var(--fonte-titulo);
+    font-size: 3rem;
+    color: var(--cor-de-destaque);
+    margin-bottom: 2rem;
+    letter-spacing: 2px;
+}
+
+.integrantes-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+}
+
+.card {
+    background-color: #2a2a2a;
+    border-radius: 8px;
+    overflow: hidden;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+}
+
+.card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.card h3 {
+    font-family: var(--fonte-titulo);
+    font-size: 1.5rem;
+    color: var(--cor-de-destaque);
+    padding: 1rem 1rem 0.3rem;
+    letter-spacing: 1px;
+}
+
+.card p {
+    padding: 0 1rem 1.5rem;
+    opacity: 0.8;
+    font-size: 0.9rem;
+}
+
+.card img.foto-dexter {
+    object-position: center top;
+}
+
+.card img.foto-greg {
+    object-position: center top;
+}

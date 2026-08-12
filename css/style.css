@@ -112,3 +112,51 @@ nav a:hover {
     position: relative;
     z-index: 2;
 }
+
+#historia {
+    padding: 5rem 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.historia-content {
+    display: flex;
+    flex-direction: row;
+    gap: 4rem;
+    align-items: center;
+}
+
+.historia-texto {
+    flex: 1;
+}
+
+.historia-texto h2 {
+    font-family: var(--fonte-titulo);
+    font-size: 3rem;
+    color: var(--cor-de-destaque);
+    margin-bottom: 1.5rem;
+    letter-spacing: 2px;
+}
+
+.historia-texto p {
+    line-height: 1.8;
+    margin-bottom: 1rem;
+    opacity: 0.9;
+}
+
+.historia-imagem {
+    flex: 0 0 45%;
+    max-width: 45%;
+}
+
+.historia-imagem img {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 8px;
+    display: block;
+}

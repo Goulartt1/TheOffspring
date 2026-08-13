@@ -378,3 +378,25 @@ footer p {
         grid-template-columns: 1fr;
     }
 }
+
+/*dark mode e light mode */
+@media (prefers-color-scheme: light) {
+    :root {
+        --fundo-principal: #eae0d5;
+        --texto-principal: #1f1f1f;
+    }
+
+    #hero h1,
+    #hero p {
+        color: #eae0d5;
+    }
+
+    .curiosidade blockquote p {
+        color: #eae0d5;
+    }
+
+    footer {
+        background-color: #d4c9bc;
+        border-top: 1px solid #b8a99a;
+    }
+}

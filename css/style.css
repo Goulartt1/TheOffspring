@@ -327,4 +327,54 @@ footer p {
     opacity: 0.6;
     font-size: 0.9rem;
 }
-Salva e veja o r
+
+/* Tablet */
+@media (max-width: 1024px) {
+    .discografia-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    nav ul {
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .logo {
+        font-size: 1.4rem;
+    }
+
+    nav {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    #hero h1 {
+        font-size: 3.5rem;
+    }
+
+    .historia-content {
+        flex-direction: column;
+    }
+
+    .historia-imagem {
+        flex: none;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .integrantes-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .discografia-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .curiosidades-grid {
+        grid-template-columns: 1fr;
+    }
+}

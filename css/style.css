@@ -218,3 +218,26 @@ nav a:hover {
 .card img.foto-greg {
     object-position: center top;
 }
+
+#discografia {
+    padding: 5rem 0;
+}
+
+#discografia h2 {
+    font-family: var(--fonte-titulo);
+    font-size: 3rem;
+    color: var(--cor-de-destaque);
+    margin-bottom: 2rem;
+    letter-spacing: 2px;
+}
+
+.discografia-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1.5rem;
+}
+
+.discografia-grid .card img {
+    height: 200px;
+    object-fit: cover;
+}

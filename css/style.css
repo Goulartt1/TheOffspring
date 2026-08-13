@@ -241,3 +241,89 @@ nav a:hover {
     height: 200px;
     object-fit: cover;
 }
+
+#curiosidades {
+    padding: 5rem 0;
+}
+
+#curiosidades h2 {
+    font-family: var(--fonte-titulo);
+    font-size: 3rem;
+    color: var(--cor-de-destaque);
+    margin-bottom: 2rem;
+    letter-spacing: 2px;
+}
+
+.curiosidades-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.curiosidade {
+    background-color: #2a2a2a;
+    border-left: 4px solid var(--cor-de-destaque);
+    border-radius: 0 8px 8px 0;
+    padding: 2rem;
+    transition: transform 0.3s ease;
+}
+
+.curiosidade:hover {
+    transform: translateY(-4px);
+}
+
+.curiosidade blockquote p {
+    font-size: 1rem;
+    line-height: 1.8;
+    opacity: 0.9;
+    font-style: italic;
+}
+
+#redes-sociais {
+    padding: 5rem 0;
+    text-align: center;
+}
+
+#redes-sociais h2 {
+    font-family: var(--fonte-titulo);
+    font-size: 3rem;
+    color: var(--cor-de-destaque);
+    margin-bottom: 2rem;
+    letter-spacing: 2px;
+}
+
+.redes-grid {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.rede-btn {
+    background-color: transparent;
+    border: 2px solid var(--cor-de-destaque);
+    color: var(--cor-de-destaque);
+    padding: 0.8rem 2rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.rede-btn:hover {
+    background-color: var(--cor-de-destaque);
+    color: var(--fundo-principal);
+}
+
+footer {
+    background-color: #111111;
+    padding: 2rem 0;
+    text-align: center;
+    border-top: 1px solid #333333;
+}
+
+footer p {
+    opacity: 0.6;
+    font-size: 0.9rem;
+}
+Salva e veja o r

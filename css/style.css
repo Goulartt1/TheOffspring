@@ -4,16 +4,18 @@
     box-sizing: border-box;
 }
 
-:root{
+:root {
     --fundo-principal: #1f1f1f;
     --texto-principal: #eae0d5;
     --cor-de-destaque: #bd68ee;
-    --cor-secundaria: #FFEB3B;
+    --cor-superficie: #2a2a2a;
+    --cor-footer: #111111;
+    --cor-borda: #333333;
     --fonte-titulo: 'Bebas Neue', sans-serif;
     --fonte-texto: 'Inter', sans-serif;
 }
 
-body{
+body {
     background-color: var(--fundo-principal);
     color: var(--texto-principal);
     font-family: var(--fonte-texto);
@@ -124,9 +126,16 @@ nav a:hover {
     padding: 0 2rem;
 }
 
+.section-title {
+    font-family: var(--fonte-titulo);
+    font-size: 3rem;
+    color: var(--cor-de-destaque);
+    margin-bottom: 2rem;
+    letter-spacing: 2px;
+}
+
 .historia-content {
     display: flex;
-    flex-direction: row;
     gap: 4rem;
     align-items: center;
 }
@@ -166,14 +175,6 @@ nav a:hover {
     padding: 5rem 0;
 }
 
-#integrantes h2 {
-    font-family: var(--fonte-titulo);
-    font-size: 3rem;
-    color: var(--cor-de-destaque);
-    margin-bottom: 2rem;
-    letter-spacing: 2px;
-}
-
 .integrantes-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -181,7 +182,7 @@ nav a:hover {
 }
 
 .card {
-    background-color: #2a2a2a;
+    background-color: var(--cor-superficie);
     border-radius: 8px;
     overflow: hidden;
     text-align: center;
@@ -224,14 +225,6 @@ nav a:hover {
     padding: 5rem 0;
 }
 
-#discografia h2 {
-    font-family: var(--fonte-titulo);
-    font-size: 3rem;
-    color: var(--cor-de-destaque);
-    margin-bottom: 2rem;
-    letter-spacing: 2px;
-}
-
 .discografia-grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -247,14 +240,6 @@ nav a:hover {
     padding: 5rem 0;
 }
 
-#curiosidades h2 {
-    font-family: var(--fonte-titulo);
-    font-size: 3rem;
-    color: var(--cor-de-destaque);
-    margin-bottom: 2rem;
-    letter-spacing: 2px;
-}
-
 .curiosidades-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -262,7 +247,7 @@ nav a:hover {
 }
 
 .curiosidade {
-    background-color: #2a2a2a;
+    background-color: var(--cor-superficie);
     border-left: 4px solid var(--cor-de-destaque);
     border-radius: 0 8px 8px 0;
     padding: 2rem;
@@ -283,14 +268,6 @@ nav a:hover {
 #redes-sociais {
     padding: 5rem 0;
     text-align: center;
-}
-
-#redes-sociais h2 {
-    font-family: var(--fonte-titulo);
-    font-size: 3rem;
-    color: var(--cor-de-destaque);
-    margin-bottom: 2rem;
-    letter-spacing: 2px;
 }
 
 .redes-grid {
@@ -317,10 +294,10 @@ nav a:hover {
 }
 
 footer {
-    background-color: #111111;
+    background-color: var(--cor-footer);
     padding: 2rem 0;
     text-align: center;
-    border-top: 1px solid #333333;
+    border-top: 1px solid var(--cor-borda);
 }
 
 footer p {
@@ -332,18 +309,11 @@ footer p {
     padding: 5rem 0;
 }
 
-#galeria h2 {
-    font-family: var(--fonte-titulo);
-    font-size: 3rem;
-    color: var(--cor-de-destaque);
-    margin-bottom: 2rem;
-    letter-spacing: 2px;
-}
-
 .galeria-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
+    padding: 0 2rem;
 }
 
 .galeria-grid img {
@@ -367,10 +337,15 @@ footer p {
 
 /* Mobile */
 @media (max-width: 768px) {
+    header {
+    padding: 0.5rem 1rem;
+    }
+    
     nav ul {
         gap: 1rem;
         flex-wrap: wrap;
         justify-content: center;
+        gap: 0.5rem;
     }
 
     .logo {
@@ -381,6 +356,11 @@ footer p {
         flex-direction: column;
         gap: 1rem;
     }
+    
+    nav a {
+    font-size: 0.8rem;
+    }
+
 
     #hero h1 {
         font-size: 3.5rem;
@@ -412,39 +392,6 @@ footer p {
         grid-template-columns: repeat(2, 1fr);
     }
 }
-
-#galeria {
-    padding: 5rem 0;
-}
-
-#galeria h2 {
-    font-family: var(--fonte-titulo);
-    font-size: 3rem;
-    color: var(--cor-de-destaque);
-    margin-bottom: 2rem;
-    letter-spacing: 2px;
-    padding: 0 2rem;
-}
-
-.galeria-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-    padding: 0 2rem;
-}
-
-.galeria-grid img {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-    border-radius: 8px;
-    transition: transform 0.3s ease;
-}
-
-.galeria-grid img:hover {
-    transform: scale(1.03);
-}
-
 
 /*dark mode e light mode - deve ficar por último */
 @media (prefers-color-scheme: light) {

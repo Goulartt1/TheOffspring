@@ -328,6 +328,18 @@ footer p {
     transform: scale(1.03);
 }
 
+#btn-tema {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+#btn-tema:hover {
+    transform: scale(1.2);
+}
+
 /* Tablet */
 @media (max-width: 1024px) {
     .discografia-grid {
@@ -342,7 +354,6 @@ footer p {
     }
     
     nav ul {
-        gap: 1rem;
         flex-wrap: wrap;
         justify-content: center;
         gap: 0.5rem;
@@ -393,6 +404,26 @@ footer p {
     }
 }
 
+/* Toggle light mode via JavaScript */
+body.light-mode {
+    --fundo-principal: #eae0d5;
+    --texto-principal: #1f1f1f;
+}
+
+body.light-mode #hero h1,
+body.light-mode #hero p {
+    color: #eae0d5;
+}
+
+body.light-mode .curiosidade blockquote p {
+    color: #eae0d5;
+}
+
+body.light-mode footer {
+    background-color: #d4c9bc;
+    border-top: 1px solid #b8a99a;
+}
+
 /*dark mode e light mode - deve ficar por último */
 @media (prefers-color-scheme: light) {
     :root {
@@ -414,4 +445,3 @@ footer p {
         border-top: 1px solid #b8a99a;
     }
 }
-

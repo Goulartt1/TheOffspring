@@ -40,6 +40,7 @@ nav ul {
     gap: 2rem;
     list-style: none;
     order: 4;
+    align-items: center;
 }
 
 nav a {
@@ -486,24 +487,4 @@ body.light-mode footer {
     border-top: 1px solid #b8a99a;
 }
 
-/*dark mode e light mode - deve ficar por último */
-@media (prefers-color-scheme: light) {
-    :root {
-        --fundo-principal: #eae0d5;
-        --texto-principal: #1f1f1f;
-    }
 
-    #hero h1,
-    #hero p {
-        color: #eae0d5;
-    }
-
-    .curiosidade blockquote p {
-        color: #eae0d5;
-    }
-
-    footer {
-        background-color: #d4c9bc;
-        border-top: 1px solid #b8a99a;
-    }
-}

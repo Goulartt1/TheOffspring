@@ -28,7 +28,7 @@ function atualizarCountdown() {
     const minutos = Math.floor((diferenca % (1000 * 60 * 60)) / (1000 * 60));
     const segundos = Math.floor((diferenca % (1000 * 60)) / 1000);
 
-    showInfo.textContent = `🎸 The Offspring @ The Stone Pony — Asbury Park | ${dias}d ${horas}h ${minutos}m ${segundos}s`;
+    showInfo.textContent = `🎸 Faltam ${dias}d ${horas}h ${minutos}m ${segundos}s para The Offspring ao vivo @ The Stone Pony, Asbury Park`;
 }
 
 const timer = setInterval(atualizarCountdown, 1000);

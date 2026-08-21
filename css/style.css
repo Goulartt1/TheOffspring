@@ -578,7 +578,9 @@ footer p {
 
     .logo {
         font-size: 1.4rem;
-        order:2;
+        order: 2;
+        flex: 1;
+        text-align: center;
     }
 
     nav {

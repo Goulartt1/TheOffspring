@@ -8,6 +8,7 @@ const navUl = document.querySelector("nav ul");
 const fotosGaleria = document.querySelectorAll("#galeria img");
 const fotosIntegrantes = document.querySelectorAll("#integrantes .card img");
 const fotosDiscografia = document.querySelectorAll("#discografia .card img");
+const fotosHistoria = document.querySelectorAll("#historia .historia-imagem img");
 
 // Countdown - Próximo Show
 const showInfo = document.getElementById("show-info");
@@ -176,6 +177,32 @@ fotosDiscografia.forEach(function(foto, i) {
     });
 });
 
+fotosHistoria.forEach(function(foto, i) {
+    foto.addEventListener("click", function() {
+        abrirLightbox(fotosHistoria, i);
+    });
+});
+
+// Accordion
+const accordionTitulos = document.querySelectorAll(".accordion-titulo");
+
+accordionTitulos.forEach(function(titulo) {
+    titulo.addEventListener("click", function() {
+        const item = titulo.parentElement;
+        const estaAtivo = item.classList.contains("ativo");
+
+        // Fechar todos os outros
+        document.querySelectorAll(".accordion-item").forEach(function(i) {
+            i.classList.remove("ativo");
+        });
+
+        // Se não estava ativo, abrir
+        if (!estaAtivo) {
+            item.classList.add("ativo");
+        }
+    });
+});
+
 // Modal de detalhes
 const dadosMembros = {
     dexter: {
@@ -184,6 +211,7 @@ const dadosMembros = {
         nascimento: "29 de dezembro de 1965",
         local: "Garden Grove, Califórnia, EUA",
         funcao: "Vocalista e Guitarrista",
+        imagem: "assets/images/dexter.jpg",
         bio: "Fundador e líder do The Offspring desde 1984. Além de músico, Dexter é doutor em Biologia Molecular pela Universidade do Sul da Califórnia, piloto de aviões e empresário — foi dono de uma marca de molho de pimenta chamada Gringo Bandito."
     },
     noodles: {
@@ -192,6 +220,7 @@ const dadosMembros = {
         nascimento: "4 de fevereiro de 1963",
         local: "Los Angeles, Califórnia, EUA",
         funcao: "Guitarrista",
+        imagem: "assets/images/noodles.jpg",
         bio: "Membro original desde 1984, Noodles é conhecido pelo humor irreverente e pelos solos de guitarra marcantes. Antes de se juntar à banda era zelador de uma escola e era o único membro maior de idade, o que permitia comprar cerveja para os ensaios."
     },
     greg: {
@@ -200,6 +229,7 @@ const dadosMembros = {
         nascimento: "20 de janeiro de 1965",
         local: "Glendale, Califórnia, EUA",
         funcao: "Baixista",
+        imagem: "assets/images/greg.jpg",
         bio: "Cofundador da banda ao lado de Dexter Holland em 1984. Greg foi o baixista por 34 anos até sua saída em 2018. Sua linha de baixo em Smash e Americana ajudou a definir o som característico do grupo."
     },
     pete: {
@@ -208,6 +238,7 @@ const dadosMembros = {
         nascimento: "12 de maio de 1972",
         local: "Los Angeles, Califórnia, EUA",
         funcao: "Baterista",
+        imagem: "assets/images/pete.jpg",
         bio: "Pete se juntou ao The Offspring em 2007 como baterista oficial. Anteriormente tocou em bandas como Face to Face e Saves the Day. Conhecido pela precisão técnica e energia ao vivo."
     }
 };
@@ -221,6 +252,7 @@ const dadosAlbums = {
         faixas: "10",
         vendas: "Dados não disponíveis",
         destaque: "Tehran, I'll Be Waiting, Blackball",
+        imagem: "assets/images/album-theoffspring.jpg",
         descricao: "Álbum de estreia da banda, com sonoridade mais próxima do hardcore punk. Lançado de forma independente com tiragem limitada."
     },
     ignition: {
@@ -231,6 +263,7 @@ const dadosAlbums = {
         faixas: "12",
         vendas: "Mais de 200 mil cópias",
         destaque: "Kick Him When He's Down, Take It Like a Man",
+        imagem: "assets/images/album-ignition.jpg",
         descricao: "Segundo álbum que começou a chamar atenção da cena punk californiana. Marcou a transição para um som mais melódico."
     },
     smash: {
@@ -241,6 +274,7 @@ const dadosAlbums = {
         faixas: "14",
         vendas: "Mais de 11 milhões de cópias",
         destaque: "Come Out and Play, Self Esteem, Gotta Get Away",
+        imagem: "assets/images/album-smash.jpg",
         descricao: "O álbum que transformou a banda em fenômeno global. É o disco independente mais vendido da história, catapultando o punk rock de volta ao mainstream nos anos 90."
     },
     ixnay: {
@@ -251,6 +285,7 @@ const dadosAlbums = {
         faixas: "14",
         vendas: "Mais de 3 milhões de cópias",
         destaque: "Gone Away, All I Want, The Meaning of Life",
+        imagem: "assets/images/album-Ixnay.jpg",
         descricao: "Primeiro álbum lançado por uma grande gravadora. Trouxe um som mais pesado e temas mais maduros, incluindo a balada Gone Away."
     },
     americana: {
@@ -261,6 +296,7 @@ const dadosAlbums = {
         faixas: "15",
         vendas: "Mais de 10 milhões de cópias",
         destaque: "Pretty Fly (For a White Guy), Why Don't You Get a Job?, The Kids Aren't Alright",
+        imagem: "assets/images/album-americana.jpg",
         descricao: "Maior sucesso comercial da banda. Com letras sarcásticas sobre a cultura americana, dominou as rádios e a MTV mundialmente."
     },
     conspiracy: {
@@ -271,6 +307,7 @@ const dadosAlbums = {
         faixas: "13",
         vendas: "Mais de 3 milhões de cópias",
         destaque: "Original Prankster, Want You Bad, Million Miles Away",
+        imagem: "assets/images/album-conspiracy.jpg",
         descricao: "Manteve o sucesso comercial com singles bem-humorados e videoclipes icônicos na MTV."
     },
     splinter: {
@@ -281,6 +318,7 @@ const dadosAlbums = {
         faixas: "13",
         vendas: "Mais de 2 milhões de cópias",
         destaque: "Hit That, (Can't Get My) Head Around You",
+        imagem: "assets/images/album-splinter.jpg",
         descricao: "Álbum que misturou o punk rock com influências de new wave e pop punk mais acessível."
     },
     riseandfall: {
@@ -291,6 +329,7 @@ const dadosAlbums = {
         faixas: "12",
         vendas: "Mais de 1 milhão de cópias",
         destaque: "You're Gonna Go Far Kid, Hammerhead, Kristy Are You Doing Okay?",
+        imagem: "assets/images/album-riseandfall.jpg",
         descricao: "Retorno às raízes punk com produção mais pesada. You're Gonna Go Far Kid se tornou uma das músicas mais populares da banda."
     },
     daysgoby: {
@@ -301,6 +340,7 @@ const dadosAlbums = {
         faixas: "12",
         vendas: "Mais de 500 mil cópias",
         destaque: "Days Go By, Turning Into You, Cruising California",
+        imagem: "assets/images/album-daysgoby.jpg",
         descricao: "Nono álbum de estúdio com mistura de punk rápido e rock melódico. Cruising California dividiu opiniões com seu estilo pop."
     },
     letthebadtimesroll: {
@@ -311,11 +351,14 @@ const dadosAlbums = {
         faixas: "12",
         vendas: "Dados em apuração",
         destaque: "Let the Bad Times Roll, Behind Your Walls, We Never Have Sex Anymore",
+        imagem: "assets/images/album-letthebadtimesroll.jpg",
         descricao: "Décimo álbum lançado após 9 anos de hiato em estúdio. Mistura humor ácido com crítica social num mundo pós-pandemia."
     }
 };
 
-function abrirModal(dados) {
+function abrirModal(dados, lista, indice) {
+    let atual = indice;
+
     const overlay = document.createElement("div");
     overlay.classList.add("modal");
 
@@ -326,27 +369,54 @@ function abrirModal(dados) {
     btnFechar.classList.add("modal-fechar");
     btnFechar.textContent = "✕";
 
-    let html = `<h2>${dados.nome}</h2>`;
+    const btnAnterior = document.createElement("button");
+    btnAnterior.classList.add("lightbox-anterior");
+    btnAnterior.textContent = "❮";
 
-    if (dados.nomeReal) {
-        html += `<p><span class="modal-label">Nome real:</span> ${dados.nomeReal}</p>`;
-        html += `<p><span class="modal-label">Nascimento:</span> ${dados.nascimento}</p>`;
-        html += `<p><span class="modal-label">Local:</span> ${dados.local}</p>`;
-        html += `<p><span class="modal-label">Função:</span> ${dados.funcao}</p>`;
-        html += `<p><span class="modal-label">Biografia:</span> ${dados.bio}</p>`;
-    } else {
-        html += `<p><span class="modal-label">Ano:</span> ${dados.ano}</p>`;
-        html += `<p><span class="modal-label">Gravadora:</span> ${dados.gravadora}</p>`;
-        html += `<p><span class="modal-label">Produtor:</span> ${dados.produtora}</p>`;
-        html += `<p><span class="modal-label">Faixas:</span> ${dados.faixas}</p>`;
-        html += `<p><span class="modal-label">Vendas:</span> ${dados.vendas}</p>`;
-        html += `<p><span class="modal-label">Destaques:</span> ${dados.destaque}</p>`;
-        html += `<p><span class="modal-label">Sobre:</span> ${dados.descricao}</p>`;
+    const btnProximo = document.createElement("button");
+    btnProximo.classList.add("lightbox-proximo");
+    btnProximo.textContent = "❯";
+
+    function renderizarConteudo() {
+        const item = lista[atual];
+        let html = "";
+
+        if (item.imagem) {
+            html += `<img src="${item.imagem}" class="modal-imagem" alt="${item.nome}">`;
+        }
+
+        html += `<h2>${item.nome}</h2>`;
+
+        if (item.nomeReal) {
+            html += `<p><span class="modal-label">Nome real:</span> ${item.nomeReal}</p>`;
+            html += `<p><span class="modal-label">Nascimento:</span> ${item.nascimento}</p>`;
+            html += `<p><span class="modal-label">Local:</span> ${item.local}</p>`;
+            html += `<p><span class="modal-label">Função:</span> ${item.funcao}</p>`;
+            html += `<p><span class="modal-label">Biografia:</span> ${item.bio}</p>`;
+        } else {
+            html += `<p><span class="modal-label">Ano:</span> ${item.ano}</p>`;
+            html += `<p><span class="modal-label">Gravadora:</span> ${item.gravadora}</p>`;
+            html += `<p><span class="modal-label">Produtor:</span> ${item.produtora}</p>`;
+            html += `<p><span class="modal-label">Faixas:</span> ${item.faixas}</p>`;
+            html += `<p><span class="modal-label">Vendas:</span> ${item.vendas}</p>`;
+            html += `<p><span class="modal-label">Destaques:</span> ${item.destaque}</p>`;
+            html += `<p><span class="modal-label">Sobre:</span> ${item.descricao}</p>`;
+        }
+
+        conteudo.innerHTML = html;
+        conteudo.appendChild(btnFechar);
+        atualizarBotoes();
     }
 
-    conteudo.innerHTML = html;
-    conteudo.appendChild(btnFechar);
+    function atualizarBotoes() {
+        btnAnterior.style.display = atual === 0 ? "none" : "block";
+        btnProximo.style.display = atual === lista.length - 1 ? "none" : "block";
+    }
+
+    renderizarConteudo();
+    overlay.appendChild(btnAnterior);
     overlay.appendChild(conteudo);
+    overlay.appendChild(btnProximo);
     document.body.appendChild(overlay);
     body.classList.add("scroll-bloqueado");
     document.documentElement.classList.add("scroll-bloqueado");
@@ -363,15 +433,39 @@ function abrirModal(dados) {
             fecharModal();
         }
     });
+
+    btnProximo.addEventListener("click", function() {
+        if (atual < lista.length - 1) {
+            atual++;
+            renderizarConteudo();
+        }
+    });
+
+    btnAnterior.addEventListener("click", function() {
+        if (atual > 0) {
+            atual--;
+            renderizarConteudo();
+        }
+    });
+
     document.addEventListener("keydown", function(e) {
         if (e.key === "Escape") fecharModal();
+        if (e.key === "ArrowRight" && atual < lista.length - 1) {
+            atual++;
+            renderizarConteudo();
+        }
+        if (e.key === "ArrowLeft" && atual > 0) {
+            atual--;
+            renderizarConteudo();
+        }
     });
 }
 
 // Clique nos cards de integrantes
 const cardsMembros = document.querySelectorAll("[data-membro]");
-cardsMembros.forEach(function(card) {
-    // Adicionar "Ver detalhes +"
+const listaMembros = Object.values(dadosMembros);
+
+cardsMembros.forEach(function(card, i) {
     const detalhes = document.createElement("span");
     detalhes.classList.add("ver-detalhes");
     detalhes.textContent = "Ver detalhes +";
@@ -379,15 +473,15 @@ cardsMembros.forEach(function(card) {
 
     card.addEventListener("click", function(e) {
         if (e.target.tagName === "IMG") return;
-        const membro = card.dataset.membro;
-        abrirModal(dadosMembros[membro]);
+        abrirModal(listaMembros[i], listaMembros, i);
     });
 });
 
 // Clique nos cards de discografia
 const cardsAlbums = document.querySelectorAll("[data-album]");
-cardsAlbums.forEach(function(card) {
-    // Adicionar "Ver detalhes +"
+const listaAlbums = Object.values(dadosAlbums);
+
+cardsAlbums.forEach(function(card, i) {
     const detalhes = document.createElement("span");
     detalhes.classList.add("ver-detalhes");
     detalhes.textContent = "Ver detalhes +";
@@ -395,7 +489,6 @@ cardsAlbums.forEach(function(card) {
 
     card.addEventListener("click", function(e) {
         if (e.target.tagName === "IMG") return;
-        const album = card.dataset.album;
-        abrirModal(dadosAlbums[album]);
+        abrirModal(listaAlbums[i], listaAlbums, i);
     });
 });

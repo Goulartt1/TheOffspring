@@ -21,6 +21,18 @@ body {
     font-family: var(--fonte-texto);
 }
 
+#barra-show {
+    background-color: var(--cor-de-destaque);
+    padding: 0.5rem 1rem;
+    text-align: center;
+}
+
+#barra-show p {
+    font-size: 0.85rem;
+    color: var(--fundo-principal);
+    font-weight: bold;
+}
+
 header {
     background-color: var(--fundo-principal);
     padding: 1rem 2rem;

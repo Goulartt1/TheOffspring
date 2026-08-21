@@ -9,6 +9,30 @@ const fotosGaleria = document.querySelectorAll("#galeria img");
 const fotosIntegrantes = document.querySelectorAll("#integrantes .card img");
 const fotosDiscografia = document.querySelectorAll("#discografia .card img");
 
+// Countdown - Próximo Show
+const showInfo = document.getElementById("show-info");
+const dataShow = new Date("2026-09-18T19:30:00");
+
+function atualizarCountdown() {
+    const agora = new Date();
+    const diferenca = dataShow - agora;
+
+    if (diferenca <= 0) {
+        showInfo.textContent = "🎸 The Offspring ao vivo AGORA @ The Stone Pony — Asbury Park!";
+        clearInterval(timer);
+        return;
+    }
+
+    const dias = Math.floor(diferenca / (1000 * 60 * 60 * 24));
+    const horas = Math.floor((diferenca % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutos = Math.floor((diferenca % (1000 * 60 * 60)) / (1000 * 60));
+    const segundos = Math.floor((diferenca % (1000 * 60)) / 1000);
+
+    showInfo.textContent = `🎸 The Offspring @ The Stone Pony — Asbury Park | ${dias}d ${horas}h ${minutos}m ${segundos}s`;
+}
+
+const timer = setInterval(atualizarCountdown, 1000);
+atualizarCountdown();
 
 botao.addEventListener("click", function() {
     body.classList.toggle("light-mode");

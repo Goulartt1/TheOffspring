@@ -199,6 +199,31 @@ nav a:hover {
     width: 100%;
     height: 250px;
     object-fit: cover;
+    cursor: zoom-in;
+    position: relative;
+}
+
+.card img:hover {
+    filter: brightness(0.7);
+}
+
+.card[data-membro] .card-info,
+.card[data-album] .card-info {
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.card .ver-detalhes {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--cor-de-destaque);
+    opacity: 0.7;
+    padding-bottom: 1rem;
+    transition: opacity 0.3s ease;
+}
+
+.card .ver-detalhes:hover {
+    opacity: 1;
 }
 
 .card h3 {
@@ -328,6 +353,72 @@ footer p {
 
 .galeria-grid img:hover {
     transform: scale(1.03);
+}
+
+/* Modal de detalhes */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 200;
+    padding: 2rem;
+}
+
+.modal-conteudo {
+    background-color: var(--cor-superficie);
+    border-radius: 12px;
+    max-width: 600px;
+    width: 100%;
+    max-height: 80vh;
+    overflow-y: auto;
+    padding: 2.5rem;
+    position: relative;
+}
+
+.modal-conteudo h2 {
+    font-family: var(--fonte-titulo);
+    font-size: 2.2rem;
+    color: var(--cor-de-destaque);
+    margin-bottom: 1.5rem;
+    letter-spacing: 1px;
+}
+
+.modal-conteudo p {
+    line-height: 1.8;
+    margin-bottom: 0.8rem;
+    opacity: 0.9;
+}
+
+.modal-conteudo .modal-label {
+    color: var(--cor-de-destaque);
+    font-weight: bold;
+}
+
+.modal-fechar {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    color: var(--texto-principal);
+    font-size: 1.8rem;
+    cursor: pointer;
+    background: none;
+    border: none;
+    transition: color 0.3s ease;
+}
+
+.modal-fechar:hover {
+    color: var(--cor-de-destaque);
+}
+
+.card[data-membro],
+.card[data-album] {
+    cursor: pointer;
 }
 
 #btn-tema {

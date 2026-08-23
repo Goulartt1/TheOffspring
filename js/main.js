@@ -35,12 +35,38 @@ function atualizarCountdown() {
 const timer = setInterval(atualizarCountdown, 1000);
 atualizarCountdown();
 
+// Typing effect no hero
+const heroTyping = document.querySelector(".hero-typing");
+const textoHero = "Pure California punk rock energy, delivered fast and loud.";
+let indiceLetra = 0;
+
+function digitarLetra() {
+    if (indiceLetra < textoHero.length) {
+        heroTyping.textContent += textoHero.charAt(indiceLetra);
+        indiceLetra++;
+        setTimeout(digitarLetra, 50);
+    } else {
+        heroTyping.classList.add("finalizado");
+    }
+}
+
+setTimeout(digitarLetra, 800);
+
+// Restaurar tema salvo
+const temaSalvo = localStorage.getItem("tema");
+if (temaSalvo === "light") {
+    body.classList.add("light-mode");
+    botao.textContent = "☀️";
+}
+
 botao.addEventListener("click", function() {
     body.classList.toggle("light-mode");
     if (body.classList.contains("light-mode")) {
         botao.textContent = "☀️";
+        localStorage.setItem("tema", "light");
     } else {
         botao.textContent = "🌙";
+        localStorage.setItem("tema", "dark");
     }
 });
 
@@ -403,8 +429,7 @@ function abrirModal(dados, lista, indice) {
         if (btnZoom) {
                 btnZoom.addEventListener("click", function(e) {
                     e.stopPropagation();
-                    fecharModal();
-                    // Cria um array de imagens virtuais para a lightbox
+                    // Abre lightbox por cima do modal (sem fechar o modal)
                     const imgFake = [{ src: lista[atual].imagem }];
                     abrirLightbox(imgFake, 0);
     });
@@ -494,4 +519,135 @@ cardsAlbums.forEach(function(card, i) {
     card.addEventListener("click", function(e) {
         abrirModal(listaAlbums[i], listaAlbums, i);
     });
+});
+
+// Animações de entrada ao rolar
+const elementosAnimados = document.querySelectorAll(
+    ".section-title, .card, .historia-texto, .historia-imagem, .accordion-item, .rede-btn, #player .container"
+);
+
+elementosAnimados.forEach(function(el) {
+    el.classList.add("fade-in");
+});
+
+const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+            entry.target.classList.add("visivel");
+            observer.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.1 });
+
+elementosAnimados.forEach(function(el) {
+    observer.observe(el);
+});
+
+// Estatísticas animadas
+function formatarNumero(valor) {
+    if (valor >= 1000000) {
+        return Math.floor(valor / 1000000) + "M";
+    }
+    if (valor >= 1000) {
+        return Math.floor(valor / 1000) + "K";
+    }
+    return valor.toString();
+}
+
+function animarContador(elemento) {
+    const alvo = parseInt(elemento.dataset.alvo);
+    const sufixo = elemento.dataset.sufixo || "";
+    const duracao = 2000;
+    const inicio = performance.now();
+
+    function atualizar(agora) {
+        const progresso = Math.min((agora - inicio) / duracao, 1);
+        // Easing: desacelera no final
+        const easeOut = 1 - Math.pow(1 - progresso, 3);
+        const valorAtual = Math.floor(easeOut * alvo);
+
+        elemento.textContent = formatarNumero(valorAtual) + sufixo;
+
+        if (progresso < 1) {
+            requestAnimationFrame(atualizar);
+        } else {
+            elemento.textContent = formatarNumero(alvo) + sufixo;
+        }
+    }
+
+    requestAnimationFrame(atualizar);
+}
+
+const estatisticasNumeros = document.querySelectorAll(".estatistica-numero");
+
+const observerEstatisticas = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+            animarContador(entry.target);
+            observerEstatisticas.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.5 });
+
+estatisticasNumeros.forEach(function(el) {
+    observerEstatisticas.observe(el);
+});
+
+// Navegação ativa na navbar
+const secoes = document.querySelectorAll("main section[id]");
+const navLinks = document.querySelectorAll("nav ul a");
+
+const observerNav = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+            const id = entry.target.getAttribute("id");
+            navLinks.forEach(function(link) {
+                link.classList.remove("nav-ativo");
+                if (link.getAttribute("href") === "#" + id) {
+                    link.classList.add("nav-ativo");
+                }
+            });
+        }
+    });
+}, { threshold: 0.1, rootMargin: "0px 0px -60% 0px" });
+
+secoes.forEach(function(secao) {
+    observerNav.observe(secao);
+});
+
+// Forçar destaque de Redes Sociais ao chegar no final da página
+window.addEventListener("scroll", function() {
+    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 50) {
+        navLinks.forEach(function(link) {
+            link.classList.remove("nav-ativo");
+            if (link.getAttribute("href") === "#redes-sociais") {
+                link.classList.add("nav-ativo");
+            }
+        });
+    }
+});
+
+// Efeito parallax no hero
+const hero = document.getElementById("hero");
+
+window.addEventListener("scroll", function() {
+    const scrollY = window.scrollY;
+    if (scrollY < window.innerHeight) {
+        hero.style.backgroundPositionY = scrollY * 0.4 + "px";
+    }
+});
+
+// Botão voltar ao topo
+const btnTopo = document.getElementById("btn-topo");
+
+window.addEventListener("scroll", function() {
+    if (window.scrollY > 400) {
+        btnTopo.classList.add("visivel");
+    } else {
+        btnTopo.classList.remove("visivel");
+    }
+});
+
+btnTopo.addEventListener("click", function() {
+    window.scrollTo({ top: 0, behavior: "smooth" });
 });

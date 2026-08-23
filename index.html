@@ -41,7 +41,7 @@
         <section id="hero">
             <div class="hero-content">
                 <h1>The Offspring</h1>
-                <p>Pure California punk rock energy, delivered fast and loud.</p>
+                <p class="hero-typing"></p>
                 <a href="#historia" class="btn">Conheça a história</a>
             </div>    
         </section>        
@@ -58,6 +58,29 @@
                     </div>
                 </div>
             </div>        
+        </section>
+
+        <section id="estatisticas">
+            <div class="container">
+                <div class="estatisticas-grid">
+                    <div class="estatistica-item">
+                        <span class="estatistica-numero" data-alvo="40000000" data-sufixo="+">0</span>
+                        <p>Discos vendidos</p>
+                    </div>
+                    <div class="estatistica-item">
+                        <span class="estatistica-numero" data-alvo="10" data-sufixo="">0</span>
+                        <p>Álbuns de estúdio</p>
+                    </div>
+                    <div class="estatistica-item">
+                        <span class="estatistica-numero" data-alvo="4" data-sufixo="">0</span>
+                        <p>Décadas de carreira</p>
+                    </div>
+                    <div class="estatistica-item">
+                        <span class="estatistica-numero" data-alvo="11000000" data-sufixo="+">0</span>
+                        <p>Cópias vendidas do álbum Smash</p>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <section id="integrantes">
@@ -162,9 +185,14 @@
         </section>
         <section id="player">
             <div class="container">
-                <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/artist/5LfGQac0EIXyAN8aUwmNAQ?utm_source=generator&si=84658955a4464371" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                <h2 class="section-title">Player</h2>
+                <p class="player-dica">🎵 Use o mini-player fixo no rodapé para ouvir enquanto navega.</p>
             </div>
         </section>
+
+        <div id="mini-player">
+            <iframe src="https://open.spotify.com/embed/artist/5LfGQac0EIXyAN8aUwmNAQ?utm_source=generator&si=84658955a4464371" width="100%" height="80" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        </div>
         <section id="curiosidades">
             <div class="container">
                 <h2 class="section-title">Curiosidades</h2>
@@ -223,6 +251,8 @@
             <p>&copy; 2026 The Offspring Tribute. Feito com amor ao punk rock.</p>
         </div>
     </footer>
+
+    <button id="btn-topo" aria-label="Voltar ao topo">↑</button>
 
 </body>
 </html>

@@ -434,17 +434,6 @@ footer p {
     background-color: var(--fundo-principal);
 }
 
-#player {
-    padding: 5rem 0;
-    background-color: var(--fundo-principal);
-}
-
-.player-dica {
-    text-align: center;
-    opacity: 0.7;
-    font-size: 0.95rem;
-}
-
 /* Mini-player fixo */
 #mini-player {
     position: fixed;

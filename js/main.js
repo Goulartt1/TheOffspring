@@ -165,18 +165,6 @@ fotosGaleria.forEach(function(foto, i) {
     });
 });
 
-fotosIntegrantes.forEach(function(foto, i) {
-    foto.addEventListener("click", function() {
-        abrirLightbox(fotosIntegrantes, i);
-    });
-});
-
-fotosDiscografia.forEach(function(foto, i) {
-    foto.addEventListener("click", function() {
-        abrirLightbox(fotosDiscografia, i);
-    });
-});
-
 fotosHistoria.forEach(function(foto, i) {
     foto.addEventListener("click", function() {
         abrirLightbox(fotosHistoria, i);
@@ -221,6 +209,7 @@ const dadosMembros = {
         local: "Los Angeles, Califórnia, EUA",
         funcao: "Guitarrista",
         imagem: "assets/images/noodles.jpg",
+        classeImagem: "modal-img-noodles",
         bio: "Membro original desde 1984, Noodles é conhecido pelo humor irreverente e pelos solos de guitarra marcantes. Antes de se juntar à banda era zelador de uma escola e era o único membro maior de idade, o que permitia comprar cerveja para os ensaios."
     },
     greg: {
@@ -230,6 +219,7 @@ const dadosMembros = {
         local: "Glendale, Califórnia, EUA",
         funcao: "Baixista",
         imagem: "assets/images/greg.jpg",
+        classeImagem: "modal-img-greg",
         bio: "Cofundador da banda ao lado de Dexter Holland em 1984. Greg foi o baixista por 34 anos até sua saída em 2018. Sua linha de baixo em Smash e Americana ajudou a definir o som característico do grupo."
     },
     pete: {
@@ -239,6 +229,7 @@ const dadosMembros = {
         local: "Los Angeles, Califórnia, EUA",
         funcao: "Baterista",
         imagem: "assets/images/pete.jpg",
+        classeImagem: "modal-img-pete",
         bio: "Pete se juntou ao The Offspring em 2007 como baterista oficial. Anteriormente tocou em bandas como Face to Face e Saves the Day. Conhecido pela precisão técnica e energia ao vivo."
     }
 };
@@ -382,9 +373,13 @@ function abrirModal(dados, lista, indice) {
         let html = "";
 
         if (item.imagem) {
-            html += `<img src="${item.imagem}" class="modal-imagem" alt="${item.nome}">`;
-        }
-
+            const classeExtra = item.classeImagem ? " " + item.classeImagem : "";
+            const classeAlbum = item.ano ? " modal-imagem-album" : "";
+            html += `<div class="modal-imagem-container">`;
+            html += `<img src="${item.imagem}" class="modal-imagem${classeExtra}${classeAlbum}" alt="${item.nome}">`;
+            html += `<button class="modal-zoom-btn" title="Ver em tela cheia"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></button>`;
+            html += `</div>`;
+}
         html += `<h2>${item.nome}</h2>`;
 
         if (item.nomeReal) {
@@ -404,6 +399,16 @@ function abrirModal(dados, lista, indice) {
         }
 
         conteudo.innerHTML = html;
+        const btnZoom = conteudo.querySelector(".modal-zoom-btn");
+        if (btnZoom) {
+                btnZoom.addEventListener("click", function(e) {
+                    e.stopPropagation();
+                    fecharModal();
+                    // Cria um array de imagens virtuais para a lightbox
+                    const imgFake = [{ src: lista[atual].imagem }];
+                    abrirLightbox(imgFake, 0);
+    });
+}
         conteudo.appendChild(btnFechar);
         atualizarBotoes();
     }
@@ -472,7 +477,6 @@ cardsMembros.forEach(function(card, i) {
     card.appendChild(detalhes);
 
     card.addEventListener("click", function(e) {
-        if (e.target.tagName === "IMG") return;
         abrirModal(listaMembros[i], listaMembros, i);
     });
 });
@@ -488,7 +492,6 @@ cardsAlbums.forEach(function(card, i) {
     card.appendChild(detalhes);
 
     card.addEventListener("click", function(e) {
-        if (e.target.tagName === "IMG") return;
         abrirModal(listaAlbums[i], listaAlbums, i);
     });
 });

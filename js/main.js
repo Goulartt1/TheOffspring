@@ -651,3 +651,84 @@ window.addEventListener("scroll", function() {
 btnTopo.addEventListener("click", function() {
     window.scrollTo({ top: 0, behavior: "smooth" });
 });
+
+// ============================================
+// Animação de brasas no hero (canvas)
+// ============================================
+const brasasCanvas = document.getElementById("brasas-canvas");
+
+if (brasasCanvas) {
+    const ctx = brasasCanvas.getContext("2d");
+    let particulas = [];
+
+    // Ajusta o tamanho interno do canvas ao tamanho visual
+    function dimensionarBrasas() {
+        brasasCanvas.width = brasasCanvas.offsetWidth;
+        brasasCanvas.height = brasasCanvas.offsetHeight;
+    }
+
+    // Cria uma brasa com propriedades aleatórias
+    function criarParticula() {
+        return {
+            x: Math.random() * brasasCanvas.width,
+            y: brasasCanvas.height + Math.random() * 20, // começa abaixo da base
+            raio: Math.random() * 2.5 + 0.5,
+            velocidadeY: Math.random() * 1.2 + 0.4,       // velocidade de subida
+            velocidadeX: (Math.random() - 0.5) * 0.6,     // leve deriva lateral
+            opacidade: Math.random() * 0.5 + 0.3,
+            oscilacao: Math.random() * Math.PI * 2         // fase inicial do balanço
+        };
+    }
+
+    // Preenche o array de partículas (quantidade proporcional à largura)
+    function iniciarParticulas() {
+        particulas = [];
+        const quantidade = Math.floor(brasasCanvas.width / 20);
+        for (let i = 0; i < quantidade; i++) {
+            const p = criarParticula();
+            p.y = Math.random() * brasasCanvas.height; // espalha na tela no início
+            particulas.push(p);
+        }
+    }
+
+    function desenharBrasas() {
+        // Limpa a tela a cada frame
+        ctx.clearRect(0, 0, brasasCanvas.width, brasasCanvas.height);
+
+        particulas.forEach(function(p) {
+            // Sobe e balança horizontalmente (Math.sin dá o movimento natural)
+            p.y -= p.velocidadeY;
+            p.oscilacao += 0.02;
+            p.x += p.velocidadeX + Math.sin(p.oscilacao) * 0.3;
+
+            // Recicla a partícula que saiu pelo topo, reposicionando na base
+            if (p.y < -10) {
+                Object.assign(p, criarParticula());
+            }
+
+            // Desenha a brasa com gradiente radial (centro claro -> borda transparente)
+            const gradiente = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.raio * 2);
+            gradiente.addColorStop(0, `rgba(255, 180, 80, ${p.opacidade})`);
+            gradiente.addColorStop(0.5, `rgba(232, 125, 47, ${p.opacidade * 0.6})`);
+            gradiente.addColorStop(1, "rgba(232, 125, 47, 0)");
+
+            ctx.beginPath();
+            ctx.fillStyle = gradiente;
+            ctx.arc(p.x, p.y, p.raio * 2, 0, Math.PI * 2);
+            ctx.fill();
+        });
+
+        requestAnimationFrame(desenharBrasas);
+    }
+
+    dimensionarBrasas();
+    iniciarParticulas();
+    desenharBrasas();
+
+    // Reajusta ao redimensionar a janela
+    window.addEventListener("resize", function() {
+        dimensionarBrasas();
+        iniciarParticulas();
+    });
+}
+

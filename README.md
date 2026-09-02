@@ -88,8 +88,6 @@ TheOffspring/
 │   ├── images/
 │   ├── fonts/
 │   └── videos/
-├── ESTUDO.md
-├── EXERCICIOS-JS.md
 └── README.md
 ```
 
